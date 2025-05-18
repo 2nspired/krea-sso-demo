@@ -60,7 +60,6 @@
 	<p class="mb-6 text-zinc-300">Sign in with your Google Workspace account.</p>
 
 	<!-- Google Identity prebuilt UI -->
-	<!-- Google Code Generator: https://developers.google.com/identity/gsi/web/tools/configurator -->
 	<div
 		id="g_id_onload"
 		data-client_id={PUBLIC_GOOGLE_CLIENT_ID}
