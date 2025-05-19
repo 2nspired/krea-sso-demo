@@ -1,38 +1,30 @@
-# sv
+### 🧠 Unified Auth Flow for Individuals and Organization
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Rather than building multiple isolated login systems, this design supports a unified authentication flow that adapts to different user types based on their email domain.
 
-## Creating a project
+The core logic revolves around checking the domain of the authenticated user’s email. This allows the system to branch behavior intelligently:
 
-If you're seeing this, you've probably already done this step. Congrats!
+| User Type                  | Login Options           | Org Detection Logic                                |
+| -------------------------- | ----------------------- | -------------------------------------------------- |
+| 🧝 Individual user         | Email or Google login   | Email domain is **not in registry**                |
+| 🏢 Org member (no IdP)     | Email or Google login   | Email domain **is** in registry; `usesSSO = false` |
+| 🏢 Org member (Google SSO) | Google login (prebuilt) | Email domain **is** in registry; `usesSSO = true`  |
 
-```bash
-# create a new project in the current directory
-npx sv create
+This architecture:
 
-# create a new project in my-app
-npx sv create my-app
-```
+- ✅ Supports both individual and enterprise onboarding
+- ✅ Aligns with real-world SaaS identity evolution
+- ✅ Centralizes logic around one domain registry, reducing complexity
+- ✅ Makes the product SSO-ready with minimal friction
 
-## Developing
+---
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### 💡 Additional Sections to Consider for README
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- **Project Overview**
+- **Supported Login Flows**
+- **Org Detection Logic**
+- **Auth Strategy Overview** (Google ID token + Supabase + optional nonce)
+- **Tech Stack**
+- **Run Locally / Deploy**
+- **What I’d Build Next** (great for async reviewers)

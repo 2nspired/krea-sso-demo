@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { supabase } from '$lib/supabaseClient';
 	import { PUBLIC_GOOGLE_CLIENT_ID } from '$env/static/public';
+
+	export let data;
+	const { supabase } = data;
 
 	type CredentialResponse = {
 		credential: string;
@@ -9,18 +11,15 @@
 		state: any;
 	};
 
-	// nonce is sent to supabase, hasedNonce is sent to google
+	// google requires a hashed nonce, non-hashed must go to supabase.
 	let nonce = '';
 	let hashedNonce = '';
 
-	// Helper to hash the nonce
 	async function generateNonceAndHash() {
-		// Generate random base64 nonce
 		const array = new Uint8Array(32);
 		crypto.getRandomValues(array);
 		nonce = btoa(String.fromCharCode(...array));
 
-		// Hash the nonce (SHA-256, hex)
 		const encoder = new TextEncoder();
 		const encodedNonce = encoder.encode(nonce);
 		const hashBuffer = await crypto.subtle.digest('SHA-256', encodedNonce);
@@ -32,7 +31,7 @@
 		const { data, error } = await supabase.auth.signInWithIdToken({
 			provider: 'google',
 			token: response.credential,
-			nonce // use the original, unhashed nonce here
+			nonce
 		});
 		if (error) {
 			console.error('Supabase signInWithIdToken error:', error.message);
@@ -44,10 +43,8 @@
 	onMount(async () => {
 		await generateNonceAndHash();
 
-		// Expose the handler globally for Google callback
 		(window as any).handleSignInWithGoogle = handleSignInWithGoogle;
 
-		// Load Google Identity Services script
 		const script = document.createElement('script');
 		script.src = 'https://accounts.google.com/gsi/client';
 		script.async = true;
