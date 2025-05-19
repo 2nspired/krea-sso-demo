@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { PUBLIC_GOOGLE_CLIENT_ID } from '$env/static/public';
+	import { goto } from '$app/navigation';
 
 	export let data;
 	const { supabase } = data;
@@ -35,7 +36,7 @@
 		if (error) {
 			console.error('Supabase signInWithIdToken error:', error.message);
 		} else {
-			window.location.href = '/dashboard';
+			window.location.href = '/';
 		}
 	};
 
@@ -58,7 +59,7 @@
 		event.preventDefault();
 		const domain = email.split('@')[1];
 
-		// check if the domain is in the organizations table and if it is, redirect to the sso_redirect_url
+		// check if the domain is in the organizations table and if it is, redirect to the sso_redirect_url stored in subabase.
 		const { data: org, error: orgError } = await supabase
 			.from('organizations')
 			.select('uses_sso, sso_redirect_url')
@@ -73,7 +74,7 @@
 
 		if (org?.uses_sso) {
 			if (org?.sso_redirect_url) {
-				window.location.href = org.sso_redirect_url;
+				goto(`/login/sso-redirect?to=${encodeURIComponent(org.sso_redirect_url)}`);
 				return;
 			}
 			// fallback to supabase SSO login (SP-initiated)
@@ -107,8 +108,13 @@
 			<div
 				id="g_id_onload"
 				data-client_id={PUBLIC_GOOGLE_CLIENT_ID}
-				data-login_uri={login_uri}
-				data-auto_prompt="false"
+				data-context="signin"
+				data-ux_mode="popup"
+				data-callback="handleSignInWithGoogle"
+				data-nonce={hashedNonce}
+				data-auto_select="true"
+				data-itp_support="true"
+				data-use_fedcm_for_prompt="true"
 			></div>
 			<div
 				class="g_id_signin"
