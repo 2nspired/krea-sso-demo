@@ -14,6 +14,6 @@
 	});
 </script>
 
-<main class="min-h-screen bg-zinc-600 text-zinc-50">
-	<div class="container mx-auto p-4">{@render children()}</div>
+<main class="h-screen bg-zinc-800 text-zinc-50">
+	<div class="h-full">{@render children()}</div>
 </main>

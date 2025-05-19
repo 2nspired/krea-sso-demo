@@ -28,3 +28,15 @@ This architecture:
 - **Tech Stack**
 - **Run Locally / Deploy**
 - **What I’d Build Next** (great for async reviewers)
+
+TODO: Update this file
+
+1.  Navigate to Google Workspace Apps: https://workspace.google.com/dashboard
+2.  Select krea-sso-demo
+3.      •	What’s SAML SSO?
+
+    SAML is an XML-based standard for single sign-on. It allows Google Workspace (our IdP) to authenticate users and send a secure assertion to our backend (Supabase) to log them in.
+    • What’s the IdP-initiated flow?
+    This flow begins in the Identity Provider (Google). When a user clicks the app in their workspace, it sends a SAML assertion directly to Supabase’s Auth server — no action from the frontend required.
+    • What happens after the SAML assertion is received?
+    Supabase creates the user and redirects them back to your app. In your SvelteKit project, the +layout.server.ts picks up the session and gives them access to the dashboard.
