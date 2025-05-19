@@ -1,0 +1,11 @@
+{
+	"name": "com.chrome.devtools",
+	"description": "Chrome DevTools",
+	"version": "1.0.0",
+	"permissions": ["activeTab"],
+	"background": {
+		"service_worker": "background.js"
+	}
+}
+
+
