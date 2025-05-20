@@ -6,10 +6,11 @@
 </script>
 
 <h1 class="mb-2 text-3xl font-extrabold text-gray-800">Dashboard</h1>
-<p class="text-red">Private route, only accessible to authenticated users.</p>
+<p class="text-gray-700">Private route, only accessible to authenticated users.</p>
 
 {#if user}
-	<h2 class="mb-4 text-lg font-semibold text-zinc-800">User Details</h2>
+	<h2 class="mb-4 text-left text-lg font-semibold text-zinc-800">User Details</h2>
+	<p class="text-gray-700">Attributes mapped from Google SSO</p>
 	<ul class="w-full space-y-2 text-zinc-800">
 		<li><strong>Email:</strong> {user.email}</li>
 		<li><strong>First Name:</strong> {user.custom_claims?.first_name}</li>
