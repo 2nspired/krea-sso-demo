@@ -40,9 +40,6 @@
 		}
 	};
 
-	let login_uri = '';
-	let gsiReady = false;
-
 	onMount(async () => {
 		await generateNonceAndHash();
 
@@ -65,7 +62,7 @@
 			}
 		}
 
-		if (!document.querySelector('script[src="https://accounts.google.com/gsi/client"]')) {
+		if (!document.querySelector('script[src=\"https://accounts.google.com/gsi/client\"]')) {
 			const script = document.createElement('script');
 			script.src = 'https://accounts.google.com/gsi/client';
 			script.async = true;
@@ -74,10 +71,8 @@
 		} else {
 			renderGoogleButton();
 		}
-
-		login_uri = `${window.location.origin}/google-login`;
-		(window as any).handleSignInWithGoogle = handleSignInWithGoogle;
 	});
+
 	let email = '';
 
 	async function handleLogin(event: Event) {
@@ -128,34 +123,9 @@
 		<h1 class="text-3xl font-extrabold text-gray-800">Welcome</h1>
 		<p class="text-lg text-zinc-800">Log in or sign up to continue</p>
 		<div class="flex w-full flex-col items-center space-y-4">
-			{#if gsiReady}
-				<!-- DISABLED one-tap login due to redundancy of sign-in button
-				<div
-                id="g_id_onload"
-                data-client_id={PUBLIC_GOOGLE_CLIENT_ID}
-                data-context="signin"
-                data-ux_mode="popup"
-                data-callback="handleSignInWithGoogle"
-                data-nonce={hashedNonce}
-                data-itp_support="true"
-                data-use_fedcm_for_prompt="true"
-            	></div> -->
-				<div
-					class="g_id_signin"
-					data-type="standard"
-					data-shape="rectangular"
-					data-theme="outline"
-					data-text="continue_with"
-					data-size="large"
-					data-logo_alignment="left"
-					data-width="300"
-					data-onsuccess="handleSignInWithGoogle"
-				></div>
-			{:else}
-				<div class="flex w-full flex-col items-center space-y-4">
-					<div id="google-signin-btn" data-width="300"></div>
-				</div>
-			{/if}
+			<div class="flex w-full flex-col items-center space-y-4">
+				<div id="google-signin-btn" data-width="300"></div>
+			</div>
 		</div>
 		<div class="my-2 flex w-full items-center">
 			<div class="flex-grow border-t border-zinc-900"></div>
