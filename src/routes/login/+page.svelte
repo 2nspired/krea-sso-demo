@@ -60,7 +60,7 @@
 					text: 'continue_with',
 					size: 'large',
 					logo_alignment: 'left',
-					width: 280
+					width: 300
 				});
 			}
 		}
@@ -121,9 +121,7 @@
 	}
 </script>
 
-<div
-	class="flex h-full items-center justify-center bg-gradient-to-bl from-gray-700 via-gray-900 to-black px-4 py-12"
->
+<div class="flex h-full items-center justify-center px-4 py-12">
 	<div
 		class="flex w-full max-w-md flex-col items-center space-y-8 rounded-2xl bg-zinc-400/90 p-8 shadow-2xl"
 	>
@@ -150,12 +148,12 @@
 					data-text="continue_with"
 					data-size="large"
 					data-logo_alignment="left"
-					data-width="280"
+					data-width="300"
 					data-onsuccess="handleSignInWithGoogle"
 				></div>
 			{:else}
 				<div class="flex w-full flex-col items-center space-y-4">
-					<div id="google-signin-btn" data-width="280"></div>
+					<div id="google-signin-btn" data-width="300"></div>
 				</div>
 			{/if}
 		</div>
