@@ -7,6 +7,7 @@
 </script>
 
 <h1 class="mb-2 text-3xl font-extrabold text-gray-800">Dashboard</h1>
+<p class="text-red">Private route, only accessible to authenticated users.</p>
 
 {#if user}
 	<h2 class="mb-4 text-lg font-semibold text-zinc-800">User Details</h2>
