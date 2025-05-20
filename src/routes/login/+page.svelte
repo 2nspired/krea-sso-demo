@@ -116,6 +116,11 @@
 	}
 </script>
 
+<header class="flex items-center justify-between p-4">
+	<nav>
+		<a class="hover:text-blue-400" href="/">Home</a>
+	</nav>
+</header>
 <div class="flex h-full items-center justify-center px-4 py-12">
 	<div
 		class="flex w-full max-w-md flex-col items-center space-y-8 rounded-2xl bg-zinc-400/90 p-8 shadow-2xl"
