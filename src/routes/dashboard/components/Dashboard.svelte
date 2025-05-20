@@ -2,7 +2,8 @@
 <script lang="ts">
 	export let user: Record<string, any> | null = null;
 
-	$: console.log(user);
+	console.log('Dashboard component loaded');
+	$: console.log('Reactive user:', user);
 </script>
 
 <h1 class="mb-2 text-3xl font-extrabold text-gray-800">Dashboard</h1>

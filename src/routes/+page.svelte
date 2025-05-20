@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	export let data;
 	const { supabase, session } = data;
 	const userName = session?.user?.user_metadata?.full_name || session?.user?.email || null;
@@ -7,6 +9,12 @@
 		await supabase.auth.signOut();
 		location.reload();
 	}
+
+	onMount(() => {
+		if (!session || !userName) {
+			location.href = '/login';
+		}
+	});
 </script>
 
 <main class="p-8">

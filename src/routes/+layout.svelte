@@ -27,7 +27,7 @@
 					refresh_token: params.refresh_token
 				})
 				.then(() => {
-					// 3. Optionally, clean up the URL
+					// 3. Clean up the URL
 					replaceState(window.location.pathname, {});
 					// 4. Invalidate to refresh session
 					invalidate('supabase:auth');
