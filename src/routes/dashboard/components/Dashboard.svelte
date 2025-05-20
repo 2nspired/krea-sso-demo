@@ -9,8 +9,10 @@
 <p class="text-gray-700">Private route, only accessible to authenticated users.</p>
 
 {#if user}
-	<h2 class="mb-4 text-left text-lg font-semibold text-zinc-800">User Details</h2>
-	<p class="text-gray-700">Attributes mapped from Google SSO</p>
+	<h2 class="mb-text-left text-lg font-semibold text-zinc-800">
+		User Details Mapped from Google SSO
+	</h2>
+
 	<ul class="w-full space-y-2 text-zinc-800">
 		<li><strong>Email:</strong> {user.email}</li>
 		<li><strong>First Name:</strong> {user.custom_claims?.first_name}</li>
