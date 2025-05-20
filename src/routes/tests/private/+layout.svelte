@@ -7,6 +7,7 @@
 		if (error) {
 			console.error(error);
 		}
+		location.reload();
 	};
 </script>
 
@@ -15,8 +16,6 @@
 		<a href="/">Home</a>
 	</nav>
 	<button onclick={logout}>Logout</button>
-
-	<!-- TODO: Add a refresh page after logout -->
 </header>
 <main>
 	{@render children()}

@@ -4,8 +4,6 @@
 	export let data: { to: string | null };
 	const to = data.to;
 
-	console.log('to in load', to);
-
 	onMount(() => {
 		const timeout = setTimeout(() => {
 			if (to) {

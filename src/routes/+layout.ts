@@ -4,8 +4,7 @@ import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = async ({ data, depends, fetch }) => {
 	/**
-	 * Declare a dependency so the layout can be invalidated, for example, on
-	 * session refresh.
+	 * Declare a dependency so the layout can be invalidated, for example, on session refresh.
 	 */
 	depends('supabase:auth');
 
@@ -27,9 +26,7 @@ export const load: LayoutLoad = async ({ data, depends, fetch }) => {
 			});
 
 	/**
-	 * It's fine to use `getSession` here, because on the client, `getSession` is
-	 * safe, and on the server, it reads `session` from the `LayoutData`, which
-	 * safely checked the session using `safeGetSession`.
+	 * It's fine to use `getSession` here, because on the client, `getSession` is safe, and on the server, it reads `session` from the `LayoutData`, which safely checked the session using `safeGetSession`.
 	 */
 	const {
 		data: { session }
