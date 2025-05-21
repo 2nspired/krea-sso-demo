@@ -111,3 +111,9 @@ Note: To support SSO, Supabase requires a pro plan.
 ## 📄 License
 
 MIT
+
+---
+
+XX OTHER NOTES
+
+1. Consideration: If a user has a login of SSO with the email you will need a way to flag that account and redirect to IdP dashboard or not allow user to create a separate account with email if already used. Supabase will still allow a second account with that same email and they will be treated as separate user auth records.
