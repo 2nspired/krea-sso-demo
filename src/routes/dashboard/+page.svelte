@@ -5,17 +5,16 @@
 	export let data: PageData;
 </script>
 
-<div class="flex h-full flex-col bg-gradient-to-bl from-gray-700 via-gray-900 to-black">
-	<header class="flex items-center justify-between p-4">
-		<nav>
-			<a class="hover:text-blue-400" href="/">Home</a>
-		</nav>
-	</header>
-	<div class="flex h-full items-center justify-center px-4 py-12">
-		<div
-			class="flex w-full max-w-md flex-col items-center space-y-8 rounded-2xl bg-zinc-400/90 p-8 shadow-2xl"
-		>
+<main class="min-h-screen bg-gradient-to-b from-white to-zinc-100 text-zinc-900">
+	<div class="mx-auto w-full max-w-6xl px-6 py-10">
+		<header class="mb-8 flex items-center justify-between">
+			<nav>
+				<a class="font-medium text-blue-600 hover:underline" href="/">← Back to Home</a>
+			</nav>
+		</header>
+
+		<div class="mx-auto max-w-2xl rounded-xl border border-zinc-200 bg-white p-8 shadow-lg">
 			<Dashboard user={data.user} />
 		</div>
 	</div>
-</div>
+</main>

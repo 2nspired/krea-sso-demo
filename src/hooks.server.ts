@@ -14,9 +14,8 @@ const supabase: Handle = async ({ event, resolve }) => {
 		cookies: {
 			getAll: () => event.cookies.getAll(),
 			/**
-			 * SvelteKit's cookies API requires `path` to be explicitly set in
-			 * the cookie options. Setting `path` to `/` replicates previous/
-			 * standard behavior.
+			 * Supabase doesn't set a path by default, but SvelteKit requires it.
+			 * Setting `path: '/'` ensures the cookie is available on all routes.
 			 */
 			setAll: (cookiesToSet) => {
 				cookiesToSet.forEach(({ name, value, options }) => {
@@ -27,9 +26,7 @@ const supabase: Handle = async ({ event, resolve }) => {
 	});
 
 	/**
-	 * Unlike `supabase.auth.getSession()`, which returns the session _without_
-	 * validating the JWT, this function also calls `getUser()` to validate the
-	 * JWT before returning the session.
+	 * Unlike `supabase.auth.getSession()`, which returns the session _without_ validating the JWT, this function also calls `getUser()` to validate the JWT before returning the session. This is a security measure to prevent unauthorized access to the dashboard, since getSession is used this may flag a warning in the console.
 	 */
 	event.locals.safeGetSession = async () => {
 		const {
@@ -63,7 +60,7 @@ const supabase: Handle = async ({ event, resolve }) => {
 };
 
 const authGuard: Handle = async ({ event, resolve }) => {
-	// Ignore .well-known requests
+	// Ignore .well-known requests (used by google oauth)
 	if (event.url.pathname.startsWith('/.well-known/')) {
 		return resolve(event);
 	}
@@ -72,12 +69,14 @@ const authGuard: Handle = async ({ event, resolve }) => {
 	event.locals.session = session;
 	event.locals.user = user;
 
+	// If the user is not logged in and they are trying to access the dashboard, redirect to login
 	if (!event.locals.session && event.url.pathname.startsWith('/dashboard')) {
-		redirect(303, '/login');
+		return redirect(303, '/login');
 	}
 
+	// If the user is logged in and they are trying to access the login page, redirect to home
 	if (event.locals.session && event.url.pathname === '/login') {
-		redirect(303, '/');
+		return redirect(303, '/');
 	}
 
 	return resolve(event);
