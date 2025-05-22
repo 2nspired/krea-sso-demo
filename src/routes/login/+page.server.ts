@@ -29,11 +29,15 @@ export const actions: Actions = {
 			.from('organizations')
 			.select('uses_sso, sso_redirect_url')
 			.eq('domain', domain)
-			.single();
+			.maybeSingle();
 
-		if (orgError || !org) {
-			console.error('Org fetch failed:', orgError?.message);
+		if (orgError) {
+			console.error(orgError);
 			return redirect(303, '/login/error');
+		}
+
+		if (!org) {
+			return redirect(303, `/signup?email=${encodeURIComponent(email)}`);
 		}
 
 		if (org.uses_sso) {
