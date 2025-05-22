@@ -16,10 +16,7 @@
 			{#if userName}
 				<div class="flex items-center gap-4 text-sm text-zinc-700">
 					<span>Hi, {userName}</span>
-					<button
-						on:click={logout}
-						class="rounded-md border border-transparent px-3 py-1.5 text-red-600 hover:border-red-400 hover:underline"
-					>
+					<button on:click={logout} class="rounded-md px-3 py-1.5 text-red-600 hover:underline">
 						Log out
 					</button>
 				</div>
