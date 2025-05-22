@@ -32,13 +32,12 @@ export const actions: Actions = {
 			.maybeSingle();
 
 		if (orgError) {
-			console.error('Org fetch error:', orgError.message);
+			console.error(orgError);
 			return redirect(303, '/login/error');
 		}
 
 		if (!org) {
-			// No org match found — treat this as an individual user
-			return redirect(303, `/login/standard?email=${encodeURIComponent(email)}`);
+			return redirect(303, `/signup?email=${encodeURIComponent(email)}`);
 		}
 
 		if (org.uses_sso) {

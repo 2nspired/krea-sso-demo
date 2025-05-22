@@ -117,3 +117,75 @@ MIT
 XX OTHER NOTES
 
 1. Consideration: If a user has a login of SSO with the email you will need a way to flag that account and redirect to IdP dashboard or not allow user to create a separate account with email if already used. Supabase will still allow a second account with that same email and they will be treated as separate user auth records.
+
+$COMMAND
+supabase sso update 123857fd-4f15-45bc-99aa-8f8315bc7214 \
+ --project-ref jizuyubnzxoaevkmpphy \
+ --attribute-mapping-file ~/Desktop/okta-attribute-mapping.json
+
+| PROPERTY             | VALUE                                                                    |
+| -------------------- | ------------------------------------------------------------------------ |
+| IDENTITY PROVIDER ID | 123857fd-4f15-45bc-99aa-8f8315bc7214                                     |
+| TYPE                 | SAML 2.0                                                                 |
+| DOMAINS              | ttrud.com                                                                |
+| SAML 2.0 METADATA    | https://dev-47066930.okta.com/app/exkouok426aQK0VsN5d7/sso/saml/metadata |
+| SAML 2.0 EntityID    | http://www.okta.com/exkouok426aQK0VsN5d7                                 |
+| CREATED AT (UTC)     | 2025-05-22 01:03:04                                                      |
+| UPDATED AT (UTC)     | 2025-05-22 01:03:04                                                      |
+
+## Attribute Mapping
+
+    {
+      "keys": {
+        "email": {
+          "name": "email"
+        },
+        "first_name": {
+          "name": "first_name"
+        },
+        "last_name": {
+          "name": "last_name"
+        },
+        "phone": {
+          "name": "phone"
+        }
+      }
+    }
+
+## SAML 2.0 Metadata XML
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <md:EntityDescriptor entityID="http://www.okta.com/exkouok426aQK0VsN5d7" xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata">
+        <md:IDPSSODescriptor WantAuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+          <md:KeyDescriptor use="signing">
+            <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+              <ds:X509Data>
+                <ds:X509Certificate>MIIDqDCCApCgAwIBAgIGAZb1e4KFMA0GCSqGSIb3DQEBCwUAMIGUMQswCQYDVQQGEwJVUzETMBEG
+    A1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU
+    MBIGA1UECwwLU1NPUHJvdmlkZXIxFTATBgNVBAMMDGRldi00NzA2NjkzMDEcMBoGCSqGSIb3DQEJ
+    ARYNaW5mb0Bva3RhLmNvbTAeFw0yNTA1MjIwMDUyNTRaFw0zNTA1MjIwMDUzNTRaMIGUMQswCQYD
+    VQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsG
+    A1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxFTATBgNVBAMMDGRldi00NzA2NjkzMDEc
+    MBoGCSqGSIb3DQEJARYNaW5mb0Bva3RhLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC
+    ggEBAOJnaFtbKNpHNIomQth2sdpEt27HO2XN5vhGhKTkfVa0orM4qOfdSs6xLLSSHa8SvW7EOR33
+    CpH5YYPU90zAoVCcAoPyEknB0WLk5leQphmyVUCv8fbmQYHtvVSgWbwOjUNKMoYowo4mr00Rak93
+    +k7UjwVFa5QJt3nEVmiv1nhwKIsq3TiJxn12lUbQHm6amd9Y00Aw197s00rlpaX52DN0QAQbG8fk
+    NnPydpXIIR3n5JtLRDvmyuOZSG0jM4TEji2Zwecli2QFAZeNLVI5KE926JzvRpQVp9t6rBcgDtm3
+    j2wkr8BLyVw1TQVRME9FbxfbUWDapsaq/N7Vdn17iW0CAwEAATANBgkqhkiG9w0BAQsFAAOCAQEA
+    bdXtm8ASx1yGh2TIkNgRkiPrSzX+r3buQs6ky1vgJ38RwNg35ZRZ4ZdNwYlFGoTJhdShGa/aL7hW
+    0Mdk48Jk67GAsR9jxJS53biudmF6Mg6dIzDbIJAR0xXo4b1Q5lCUU94red8r9GQ3+XqHZ7TQE3Ye
+    OMWC96spH6HxozScMnDVDLchscR8I2fMsxPRXVjdfHi/8u/rxYTE/nezJgAmnV70t0uCiAc4Pj+e
+    h7V6bo6UzKPCQRDvWp/11VuqzRlidMPew33RY2WcF2juCaWwTBFqsGe/c2aIRT5Y6CO9JjBhMmEv
+    rLtwzwIH2S+42xOsYI+vKKewIrUPSeJQq92HUw==</ds:X509Certificate>
+              </ds:X509Data>
+            </ds:KeyInfo>
+          </md:KeyDescriptor>
+          <md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress</md:NameIDFormat>
+          <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://dev-47066930.okta.com/app/dev-47066930_kreassodemo_1/exkouok426aQK0VsN5d7/sso/saml"/>
+          <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://dev-47066930.okta.com/app/dev-47066930_kreassodemo_1/exkouok426aQK0VsN5d7/sso/saml"/>
+        </md:IDPSSODescriptor>
+      </md:EntityDescriptor>
+
+$COMMAND
+supabase sso show 123857fd-4f15-45bc-99aa-8f8315bc7214 \
+ --project-ref jizuyubnzxoaevkmpphy
