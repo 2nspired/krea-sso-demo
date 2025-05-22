@@ -1,3 +1,5 @@
+<!-- This route is a protected route that is only accessible to authenticated users. -->
+
 <script lang="ts">
 	import Dashboard from './components/Dashboard.svelte';
 	import type { PageData } from './$types';
