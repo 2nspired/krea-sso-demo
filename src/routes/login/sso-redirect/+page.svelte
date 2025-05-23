@@ -15,7 +15,9 @@
 	});
 </script>
 
-<div class="flex h-screen items-center justify-center bg-gray-100">
+<div
+	class="flex h-screen items-center justify-center bg-gradient-to-b from-white to-zinc-100 text-zinc-900"
+>
 	{#if to}
 		<div class="rounded-lg bg-white p-8 text-center shadow-md">
 			<h1 class="mb-2 text-xl font-semibold text-gray-800">Redirecting to your SSO login...</h1>
