@@ -3,9 +3,9 @@
 	const { supabase, session } = data;
 	const userName = session?.user?.user_metadata?.full_name || session?.user?.email || null;
 
-	const isLoggedIn = !!session?.user;
-	const isSSO = session?.user?.is_sso_user;
-	const provider = session?.user?.app_metadata?.provider;
+	const isLoggedIn = data?.user;
+	const isSSO = data?.user?.app_metadata?.provider?.includes('sso');
+	const provider = data?.user?.user_metadata?.iss;
 
 	async function logout() {
 		await supabase.auth.signOut();

@@ -9,22 +9,10 @@
 
 	const isLoggedIn = data?.user;
 	const isSSO = data?.user?.app_metadata?.provider?.includes('sso');
-	const provider = data?.user?.app_metadata?.provider;
+	const provider = data?.user?.user_metadata?.iss;
 </script>
 
 <main class="min-h-screen bg-gradient-to-b from-white to-zinc-100 text-zinc-900">
-	<pre class="text-xs">
-		{JSON.stringify(
-			{
-				isLoggedIn,
-				isSSO,
-				provider,
-				user: data.user
-			},
-			null,
-			2
-		)}
-		</pre>
 	{#if isLoggedIn}
 		<div class={`${isSSO ? 'bg-blue-500' : 'bg-orange-500'} px-4 py-2 text-white`}>
 			<div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-1">
