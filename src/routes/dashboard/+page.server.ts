@@ -8,6 +8,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 	} = result;
 
 	return {
-		user: user?.user_metadata
+		user: user
 	};
 };
