@@ -84,7 +84,7 @@
 
 		<div class="flex grow flex-col items-center justify-center px-4 pb-20">
 			<div class="w-full max-w-md rounded-2xl border border-zinc-200 bg-white p-8 shadow-xl">
-				<h1 class="mb-2 text-center text-3xl font-bold">Login to Krea</h1>
+				<h1 class="mb-2 text-center text-3xl font-bold">Login</h1>
 				<p class="mb-6 text-center text-zinc-600">Choose a method to continue</p>
 
 				<div class="mb-6 flex h-11 flex-col items-center space-y-4">
