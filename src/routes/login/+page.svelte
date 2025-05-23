@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { PUBLIC_GOOGLE_CLIENT_ID } from '$env/static/public';
+	import Header from '../../components/Header.svelte';
 
 	export let data;
 	const { supabase } = data;
@@ -78,19 +79,15 @@
 </script>
 
 <main class="min-h-screen bg-gradient-to-b from-white to-zinc-100 text-zinc-900">
-	<div class="mx-auto flex h-full w-full max-w-6xl flex-col">
-		<header class="flex items-center justify-between px-6 py-8">
-			<nav>
-				<a class="font-medium text-blue-600 hover:underline" href="/">← Back to Home</a>
-			</nav>
-		</header>
+	<div class="mx-auto flex h-full w-full max-w-6xl flex-col py-10">
+		<Header />
 
 		<div class="flex grow flex-col items-center justify-center px-4 pb-20">
 			<div class="w-full max-w-md rounded-2xl border border-zinc-200 bg-white p-8 shadow-xl">
 				<h1 class="mb-2 text-center text-3xl font-bold">Login to Krea</h1>
 				<p class="mb-6 text-center text-zinc-600">Choose a method to continue</p>
 
-				<div class="mb-6 flex flex-col items-center space-y-4">
+				<div class="mb-6 flex h-11 flex-col items-center space-y-4">
 					<div id="google-signin-btn" data-width="300"></div>
 				</div>
 

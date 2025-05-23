@@ -1,50 +1,51 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import Header from '../../components/Header.svelte';
 
 	const email = page.url.searchParams.get('email') ?? '';
 </script>
 
-<div class="flex min-h-screen items-center justify-center bg-gray-100 px-4 dark:bg-gray-900">
-	<div class="w-full max-w-md rounded-lg bg-white p-8 shadow-md dark:bg-gray-800">
-		<h1 class="mb-6 text-center text-2xl font-bold text-gray-900 dark:text-white">
-			Complete Your Signup
-		</h1>
+<main class="h-full min-h-screen bg-gradient-to-b from-white to-zinc-100 text-zinc-900">
+	<div class="mx-auto flex h-full w-full max-w-6xl flex-col py-10">
+		<Header />
+		<div class="flex grow flex-col items-center justify-center px-4 pb-20">
+			<div class="w-full max-w-md rounded-2xl border border-zinc-200 bg-white p-8 shadow-xl">
+				<h1 class="mb-2 text-center text-3xl font-bold">Complete Your Signup</h1>
+				<p class="mb-6 text-center text-zinc-600">Create your account to get started</p>
 
-		<form method="POST" class="space-y-4">
-			<div>
-				<label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300"
-					>Email</label
-				>
-				<input
-					id="email"
-					name="email"
-					type="text"
-					value={email}
-					readonly
-					tabindex="-1"
-					class="mt-1 w-full rounded-md border border-gray-300 bg-gray-100 p-2 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-				/>
+				<form method="POST" class="flex flex-col gap-4">
+					<label class="flex flex-col text-sm font-medium">
+						Email address
+						<input
+							class="mt-1 border-none px-3 py-2 focus:ring-0"
+							type="text"
+							name="email"
+							id="email"
+							value={email}
+							readonly
+							tabindex="-1"
+						/>
+					</label>
+
+					<label class="flex flex-col text-sm font-medium">
+						Password
+						<input
+							class="mt-1 rounded-md border border-zinc-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-300"
+							type="password"
+							name="password"
+							id="password"
+							required
+						/>
+					</label>
+
+					<button
+						type="submit"
+						class="mt-1 rounded-md bg-blue-600 py-2 font-semibold text-white shadow transition hover:bg-blue-700"
+					>
+						Sign Up
+					</button>
+				</form>
 			</div>
-
-			<div>
-				<label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-					Password
-				</label>
-				<input
-					id="password"
-					name="password"
-					type="password"
-					required
-					class="mt-1 w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 dark:border-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-				/>
-			</div>
-
-			<button
-				type="submit"
-				class="w-full rounded-md bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-			>
-				Sign Up
-			</button>
-		</form>
+		</div>
 	</div>
-</div>
+</main>

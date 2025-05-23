@@ -36,17 +36,23 @@
 
 		<section class="mt-12 rounded-xl border border-zinc-200 bg-white p-8 text-zinc-800 shadow-lg">
 			<h2 class="mb-4 text-xl font-semibold">What this demo shows</h2>
+			<p class="mb-6 text-zinc-700">
+				This is a full-stack authentication demo using Supabase and SvelteKit 5. It supports both
+				individual users and organizations, with automatic SSO redirection based on email domain.
+				Supabase acts as the auth provider with SAML 2.0 connections to services like Google
+				Workspace and Okta.
+			</p>
+
 			<ul class="list-inside list-disc space-y-2 text-zinc-700">
-				<li>✨ Google Workspace SSO as IdP</li>
-				<li>🧠 Email domain check to determine SSO vs standard login</li>
-				<li>🔁 Reroute to SSO based on domain match</li>
+				<li>🔐 SAML SSO via Google Workspace and Okta</li>
+				<li>📧 Domain-based logic to detect if SSO should be used</li>
+				<li>↪️ Redirect flow to SSO IdP for eligible users</li>
+				<li>📝 Password-based sign-up for individual users</li>
 			</ul>
 
 			<div class="mt-6 border-t border-zinc-200 pt-4 text-sm text-zinc-600">
 				<p>
-					ℹ️ Note: Supabase treats Google login and SSO login as separate identities, even if the
-					email is the same. This means that extra logic is needed to avoid duplicate accounts if
-					your org uses SSO. This demo highlights that complexity and how you might handle it.
+					For detailed instructions, see TODO: REPLACE WITH LINK TO README ONCE REPO MOVED OVER.
 				</p>
 			</div>
 		</section>
