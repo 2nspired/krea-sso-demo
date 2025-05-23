@@ -204,5 +204,3 @@ _Note:_ You can map to many fields, anything that doesn't directly map will be c
 ## License
 
 MIT
-
----
