@@ -18,7 +18,7 @@
 		<div class={`${isSSO ? 'bg-blue-500' : 'bg-orange-500'} px-4 py-2 text-white`}>
 			<div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-1">
 				{#if isSSO}
-					<strong>SSO Login</strong>{provider ? ` (${provider})` : ''}
+					<strong>SSO Login</strong>{provider ? ` ${provider}` : ''}
 				{:else}
 					<strong>Not an SSO login</strong>
 				{/if}
