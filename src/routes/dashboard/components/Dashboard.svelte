@@ -1,7 +1,5 @@
 <script lang="ts">
 	export let user: Record<string, any> | null = null;
-
-	console.log(user);
 </script>
 
 <h1 class="mb-4 text-3xl font-bold text-zinc-900">Dashboard</h1>
@@ -11,6 +9,7 @@
 	<h2 class="mb-2 text-lg font-semibold text-zinc-800">User Details</h2>
 	<ul class="space-y-1 text-sm text-zinc-700">
 		<li><strong>Email:</strong> {user.email}</li>
+		<li><strong>Email Verified:</strong> {user.email_verified ? 'Yes' : 'No'}</li>
 		<li>
 			<strong>First Name:</strong>
 			{user.custom_claims?.first_name ?? user.full_name?.split(' ')[0]}
