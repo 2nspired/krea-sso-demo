@@ -8,7 +8,7 @@
 	export let data: PageData;
 
 	const isLoggedIn = data?.user;
-	const isSSO = data?.user?.is_sso_user;
+	const isSSO = data?.user?.app_metadata?.provider?.includes('sso');
 	const provider = data?.user?.app_metadata?.provider;
 </script>
 
