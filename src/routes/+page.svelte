@@ -52,7 +52,14 @@
 
 			<div class="mt-6 border-t border-zinc-200 pt-4 text-sm text-zinc-600">
 				<p>
-					For detailed instructions, see TODO: REPLACE WITH LINK TO README ONCE REPO MOVED OVER.
+					For detailed instructions, see the
+					<a
+						href="https://github.com/2nspired/supabase-sso-demo#readme"
+						class="text-blue-600 hover:underline"
+						target="_blank"
+					>
+						full README on GitHub
+					</a>.
 				</p>
 			</div>
 		</section>
