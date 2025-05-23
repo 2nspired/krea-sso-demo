@@ -3,9 +3,9 @@
 	const { supabase, session } = data;
 	const userName = session?.user?.user_metadata?.full_name || session?.user?.email || null;
 
-	const isLoggedIn = !!session?.user;
-	const isSSO = session?.user?.is_sso_user;
-	const provider = session?.user?.app_metadata?.provider;
+	// const isLoggedIn = !!session?.user;
+	// const isSSO = session?.user?.is_sso_user;
+	// const provider = session?.user?.app_metadata?.provider;
 
 	async function logout() {
 		await supabase.auth.signOut();
@@ -14,7 +14,7 @@
 </script>
 
 <main class="min-h-screen bg-gradient-to-b from-white to-zinc-100 text-zinc-900">
-	{#if isLoggedIn}
+	<!-- {#if isLoggedIn}
 		<div class={`${isSSO ? 'bg-blue-500' : 'bg-orange-500'} px-4 py-2 text-white`}>
 			<div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-1">
 				{#if isSSO}
@@ -24,7 +24,7 @@
 				{/if}
 			</div>
 		</div>
-	{/if}
+	{/if} -->
 	<div class="mx-auto w-full max-w-6xl px-6 py-10">
 		<header class="mb-8 flex items-center justify-between">
 			<h1 class="text-3xl font-bold">Supabase SSO Demo</h1>
