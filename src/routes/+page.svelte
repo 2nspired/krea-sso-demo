@@ -12,7 +12,7 @@
 <main class="min-h-screen bg-gradient-to-b from-white to-zinc-100 text-zinc-900">
 	<div class="mx-auto w-full max-w-6xl px-6 py-10">
 		<header class="mb-8 flex items-center justify-between">
-			<h1 class="text-3xl font-bold">Krea SSO Demo</h1>
+			<h1 class="text-3xl font-bold">Supabase SSO Demo</h1>
 			{#if userName}
 				<div class="flex items-center gap-4 text-sm text-zinc-700">
 					<span>Hi, {userName}</span>
