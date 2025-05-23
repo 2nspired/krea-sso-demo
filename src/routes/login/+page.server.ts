@@ -50,7 +50,7 @@ export const actions: Actions = {
 			const { error } = await supabase.auth.signInWithSSO({
 				domain,
 				options: {
-					redirectTo: 'krea-sso-demo.vercel.app/'
+					redirectTo: 'supabase-sso-demo.vercel.app/'
 				}
 			});
 
